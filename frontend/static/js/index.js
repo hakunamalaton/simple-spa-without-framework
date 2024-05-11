@@ -1,6 +1,12 @@
-import { Dashboard } from "./views/Dashboard.js";
+import { Dashboard } from "./views/Dashboard";
 import { Post } from "./views/Post";
 import { Setting } from "./views/Setting";
+
+
+const navigateTo = (url) => {
+  history.pushState(null, null, url);
+  router();
+}
 
 const router = async () => {
   const routes = [
@@ -35,6 +41,13 @@ const router = async () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.addEventListener('click', (e) => {
+    if (e.target.matches('[data-link]')) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    }
+  });
+
   router();
 });
 
