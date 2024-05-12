@@ -4,7 +4,7 @@ import { Setting } from "./views/Setting";
 
 
 const navigateTo = (url) => {
-  history.pushState(null, null, url);
+  history.pushState(null, '', url);
   router();
 }
 
